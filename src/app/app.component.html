@@ -1,8 +1,16 @@
 <div class="l-app">
   <div class="l-app__sideNav">
-    <sidenav-autosize-example></sidenav-autosize-example>
+    <!-- 注意這裡所用的雙花括號 —— 它們指示 Angular 對其中的內容進行插值。 -->
+    <sidenav-autosize-example 
+      [fromAppComponent]="fromAppComponent"
+      (notify)="onDrawerToggled($event)"
+    >
+    </sidenav-autosize-example>
   </div>
   <div class="l-app__container">
+    <section [ngStyle]="{'color': drawerOpenedInAppComponent ? 'green': 'red'}">
+      drawerOpenedInAppComponent: {{ drawerOpenedInAppComponent }}
+    </section>
     <router-outlet></router-outlet>
   </div>
 </div>

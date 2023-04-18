@@ -1,11 +1,20 @@
 <mat-drawer-container class="example-container" autosize>
-	<mat-drawer  (openedStart)="drawerOpened = true" (closed)="drawerOpened = false" #drawer class="example-sidenav" mode="side">
+	
+	<!-- 你可以透過在圓括號中指定事件名稱來宣告一個事件監聽器 -->
+	
+	<mat-drawer 
+		(opened)="emitDrawerToggled()"
+		(openedStart)="drawerOpened = true"
+		(closed)="drawerOpened = false; emitDrawerToggled()" 
+		#drawer class="example-sidenav"
+		mode="side"
+	>
 		<div>
 			<button type="button" mat-button (click)="drawer.toggle()">
-			  close
+				close
 			</button>
 		</div>
-		<div>
+		<div>	
 			<a [routerLink]="['/']">
 				home
 			</a>
@@ -15,13 +24,12 @@
 				Member
 			</a>
 		</div>
+		{{ fromAppComponent }}
 	</mat-drawer>
-  
+
 	<div *ngIf="!drawerOpened" class="example-sidenav-content">
-	  <button type="button" mat-button (click)="drawer.toggle()">
-		open
+	  <button type="button" mat-button (click)="drawer.toggle();">
+		 open
 	  </button>
 	</div>
-
 </mat-drawer-container>
-  

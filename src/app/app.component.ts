@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-example-project';
+  fromAppComponent = "fromAppComponent";
+  drawerOpenedInAppComponent = false;
+  onDrawerToggled(e: boolean) {
+    this.drawerOpenedInAppComponent = e;
+  }
 }

@@ -1,5 +1,5 @@
-import { Component} from '@angular/core';
-
+import { Component, Input, Output, EventEmitter  } from '@angular/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
 /**
  * @title Autosize sidenav
  */
@@ -8,7 +8,14 @@ import { Component} from '@angular/core';
   templateUrl: 'sidenav.component.html',
   styleUrls: ['sidenav.component.scss'],
 })
+
 export class SidenavAutosizeExample {
   showFiller = false;
   drawerOpened = false;
+  @Input() fromAppComponent!: string;
+  @Output() notify = new EventEmitter<boolean>();
+
+  emitDrawerToggled = () => {
+    this.notify.emit(this.drawerOpened);
+  }
 }

@@ -5,14 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MemberComponent } from './member/member.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import { SidenavAutosizeExample } from './sidenav/sidenav.component'; 
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavAutosizeExample } from './sidenav/sidenav.component';
+import { HomeComponent } from './home/home.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     MemberComponent,
-    SidenavAutosizeExample
+    SidenavAutosizeExample,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -23,4 +25,4 @@ import { SidenavAutosizeExample } from './sidenav/sidenav.component';
   providers: [],
   bootstrap: [AppComponent] 
 })
-export class AppModule { }
+export class AppModule {}

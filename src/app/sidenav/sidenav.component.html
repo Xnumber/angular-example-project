@@ -1,0 +1,27 @@
+<mat-drawer-container class="example-container" autosize>
+	<mat-drawer  (openedStart)="drawerOpened = true" (closed)="drawerOpened = false" #drawer class="example-sidenav" mode="side">
+		<div>
+			<button type="button" mat-button (click)="drawer.toggle()">
+			  close
+			</button>
+		</div>
+		<div>
+			<a [routerLink]="['/']">
+				home
+			</a>
+		</div>
+		<div>
+			<a [routerLink]="['/member']">
+				Member
+			</a>
+		</div>
+	</mat-drawer>
+  
+	<div *ngIf="!drawerOpened" class="example-sidenav-content">
+	  <button type="button" mat-button (click)="drawer.toggle()">
+		open
+	  </button>
+	</div>
+
+</mat-drawer-container>
+  

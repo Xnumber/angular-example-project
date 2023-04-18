@@ -1,0 +1,12 @@
+.l-app {
+	height: 100%;
+	display: flex;
+	&__sideNav {
+		flex: 0 0 100px;
+		height: 100%
+	}
+
+	&__container {
+		flex: 1;
+	}
+}

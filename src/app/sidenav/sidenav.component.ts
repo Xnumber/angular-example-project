@@ -14,7 +14,7 @@ export class SidenavAutosizeExample {
   drawerOpened = false;
   @Input() fromAppComponent!: string;
   @Output() notify = new EventEmitter<boolean>();
-
+  className = "test-class-name";
   emitDrawerToggled = () => {
     this.notify.emit(this.drawerOpened);
   }

@@ -2,7 +2,9 @@
 	
 	<!-- 你可以透過在圓括號中指定事件名稱來宣告一個事件監聽器 -->
 	
-	<mat-drawer 
+	<mat-drawer
+		id="test-id"
+		[class]="className"
 		(opened)="emitDrawerToggled()"
 		(openedStart)="drawerOpened = true"
 		(closed)="drawerOpened = false; emitDrawerToggled()" 

@@ -9,7 +9,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavAutosizeExample } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { TopBarComponent } from './components/organisms/top-bar/top-bar.component';
-import { ProductListComponent } from './components/product-list/product-list.component'; 
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductAlertsComponent } from './components/atoms/product-alerts/product-alerts.component'; 
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProductListComponent } from './components/product-list/product-list.com
     SidenavAutosizeExample,
     HomeComponent,
     TopBarComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductAlertsComponent
   ],
   imports: [
     BrowserModule,

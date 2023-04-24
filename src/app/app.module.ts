@@ -8,7 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavAutosizeExample } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
-import { TopBarComponent } from './components/organisms/top-bar/top-bar.component'; 
+import { TopBarComponent } from './components/organisms/top-bar/top-bar.component';
+import { ProductListComponent } from './components/product-list/product-list.component'; 
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TopBarComponent } from './components/organisms/top-bar/top-bar.componen
     MemberComponent,
     SidenavAutosizeExample,
     HomeComponent,
-    TopBarComponent
+    TopBarComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

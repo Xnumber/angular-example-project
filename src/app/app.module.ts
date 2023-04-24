@@ -14,6 +14,7 @@ import { ProductAlertsComponent } from './components/atoms/product-alerts/produc
 import { CartComponent } from './components/pages/cart/cart.component';
 import { ProductDetailsComponent } from './components/pages/product-details/product-details.component'; 
 import { HttpClientModule } from '@angular/common/http';
+import { ShippingComponent } from './components/pages/shipping/shipping.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductListComponent,
     ProductAlertsComponent,
     CartComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ShippingComponent
   ],
   imports: [
     BrowserModule,

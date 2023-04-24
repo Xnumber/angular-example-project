@@ -10,8 +10,10 @@ import { SidenavAutosizeExample } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { TopBarComponent } from './components/organisms/top-bar/top-bar.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductAlertsComponent } from './components/atoms/product-alerts/product-alerts.component'; 
-
+import { ProductAlertsComponent } from './components/atoms/product-alerts/product-alerts.component';
+import { CartComponent } from './components/pages/cart/cart.component';
+import { ProductDetailsComponent } from './components/pages/product-details/product-details.component'; 
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,10 +22,13 @@ import { ProductAlertsComponent } from './components/atoms/product-alerts/produc
     HomeComponent,
     TopBarComponent,
     ProductListComponent,
-    ProductAlertsComponent
+    ProductAlertsComponent,
+    CartComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSidenavModule,

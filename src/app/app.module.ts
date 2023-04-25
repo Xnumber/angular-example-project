@@ -8,8 +8,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavAutosizeExample } from './sidenav/sidenav.component';
 import { HomeComponent } from './home/home.component';
 import { TopBarComponent } from './components/organisms/top-bar/top-bar.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductAlertsComponent } from './components/atoms/product-alerts/product-alerts.component';
+// import { ProductListComponent } from './components/product-list/product-list.component';
+// import { ProductAlertsComponent } from './components/atoms/product-alerts/product-alerts.component';
 import { CartComponent } from './components/pages/cart/cart.component';
 import { ProductDetailsComponent } from './components/pages/product-details/product-details.component'; 
 import { HttpClientModule } from '@angular/common/http';
@@ -21,8 +21,8 @@ import { ReactiveFormsModule  } from "@angular/forms"
     SidenavAutosizeExample,
     HomeComponent,
     TopBarComponent,
-    ProductListComponent,
-    ProductAlertsComponent,
+    // ProductListComponent,
+    // ProductAlertsComponent,
     CartComponent,
     ProductDetailsComponent,
     ShippingComponent

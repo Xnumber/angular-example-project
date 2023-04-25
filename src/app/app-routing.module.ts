@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MemberComponent } from "./member/member.component";
 import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CartComponent } from 'src/app/components/pages/cart/cart.component';
@@ -9,8 +8,10 @@ import { ShippingComponent } from './components/pages/shipping/shipping.componen
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'member', component: MemberComponent },
+  { path: 'member', loadChildren: () => import("./member/member.module").then(m => m.MemberRoutingModule) },
+  // { path: 'member', component: MemberComponent },
   { path: 'product-list', component: ProductListComponent },
+  // { path: 'product-list', loadChildren: () => import("./components/product-list/product-list.component").then(m => m.ProductListComponent) },
   { path: 'cart', component: CartComponent },
   { path: 'products/:productId', component: ProductDetailsComponent },
   { path: 'shipping', component: ShippingComponent },

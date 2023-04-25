@@ -1,3 +1,12 @@
+<style>
+	.activebutton {
+    box-shadow: inset 0 1px 0 0 #dcecfb;
+    background: #bddbfa linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
+    border: 1px solid #84bbf3;
+    color: #ffffff;
+    text-shadow: 0 1px 0 #528ecc;
+}
+</style>
 <mat-drawer-container class="example-container" autosize>
 	
 	<!-- 你可以透過在圓括號中指定事件名稱來宣告一個事件監聽器 -->
@@ -17,12 +26,12 @@
 			</button>
 		</div>
 		<div>	
-			<a [routerLink]="['/']">
+			<a routerLinkActive="activebutton" [routerLink]="['/']">
 				home
 			</a>
 		</div>
 		<div>
-			<a [routerLink]="['/member']">
+			<a ariaCurrentWhenActive="page" routerLinkActive="activebutton" [routerLink]="['/member']">
 				Member
 			</a>
 		</div>

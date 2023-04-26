@@ -1,6 +1,6 @@
 import { Directive, OnInit } from '@angular/core';
 import { LoggerService } from '../services/logger-service.service';
-
+let nextId = 1;
 @Directive({
   selector: '[appPeekABoo]'
 })
@@ -12,6 +12,6 @@ export class PeekABooDirective implements OnInit {
   }
 
   logIt(msg: string) {
-    this.logger.log(`#${'nextId++'} ${msg}`);
+    this.logger.log(`#${nextId++} ${msg}`);
   }
 }

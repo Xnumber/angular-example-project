@@ -17,6 +17,7 @@ import { ShippingComponent } from './components/pages/shipping/shipping.componen
 import { ReactiveFormsModule  } from "@angular/forms";
 import { OnChangeTestComponent } from './components/atoms/on-change-test/on-change-test.component';
 import { PeekABooDirective } from './directives/peek-a-boo.directive';
+import { LifeCycleComponent } from './components/pages/life-cycle/life-cycle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { PeekABooDirective } from './directives/peek-a-boo.directive';
     ProductDetailsComponent,
     ShippingComponent,
     OnChangeTestComponent,
-    PeekABooDirective
+    PeekABooDirective,
+    LifeCycleComponent
   ],
   imports: [
     BrowserModule,

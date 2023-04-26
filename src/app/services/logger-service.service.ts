@@ -1,70 +1,33 @@
-import {Injectable} from '@angular/core';
-import {LogLevel} from './log-level.enum';
-import {environment} from '../../environments/environment';
+import { Injectable } from '@angular/core';
 
-/**
- * @description Logger service for environment logging.
- */
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LoggerService {
-  private static level: LogLevel = LogLevel.DEBUG;
+  logs: string[] = [];
+  prevMsg = '';
+  prevMsgCount = 1;
 
-  public static debug(...message: any): void {
-    LoggerService.writeToLog(LogLevel.DEBUG, ...message);
-  }
-
-  public static log(...message: any) {
-    LoggerService.writeToLog(LogLevel.INFO, ...message);
-  }
-
-  public log(...message: any) {
-    LoggerService.writeToLog(LogLevel.INFO, ...message);
-  }
-
-  public static warn(...message: any) {
-    LoggerService.writeToLog(LogLevel.WARN, ...message);
-  }
-
-  public static error(...message: any) {
-    LoggerService.writeToLog(LogLevel.ERROR, ...message);
-  }
-
-  /**
-   * Should write the log?
-   */
-  private static shouldLog(level: LogLevel): boolean {
-    return (level >= LogLevel[environment.LOG_LEVEL as "DEBUG" | "ERROR"]);
-  }
-
-  /**
-   * Write logs.
-   */
-  private static writeToLog(level: LogLevel, ...message: any) {
-    if (this.shouldLog(level)) {
-      if (level <= LogLevel.INFO) {
-        console.log(LoggerService.getLogDate(), ...message);
-      } else if (level === LogLevel.ERROR) {
-        console.error(LoggerService.getLogDate(), ...message);
-      } else if (level === LogLevel.WARN) {
-        console.warn(LoggerService.getLogDate(), ...message);
-      }
+  log(msg: string)  {
+    if (msg === this.prevMsg) {
+      // Repeat message; update last log entry with count.
+      this.logs[this.logs.length - 1] = msg + ` (${this.prevMsgCount += 1}x)`;
+    } else {
+      // New message; log it.
+      this.prevMsg = msg;
+      this.prevMsgCount = 1;
+      this.logs.push(msg);
     }
   }
 
-  /**
-   * To add the date on logs.
-   */
-  private static getLogDate(): string {
-    const date = new Date();
-    return '[' +
-      date.getUTCFullYear() + '/' +
-      (date.getUTCMonth() + 1) + '/' +
-      date.getUTCDate() + ' ' +
-      date.getUTCHours() + ':' +
-      date.getUTCMinutes() + ':' +
-      date.getUTCSeconds() + '.' +
-      date.getMilliseconds() + ']';
-  }
+  clear() { this.logs = []; }
+
+  // schedules a view refresh to ensure display catches up
+  tick() {  this.tick_then(() => { }); }
+  tick_then(fn: () => any) { setTimeout(fn, 0); }
 }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/

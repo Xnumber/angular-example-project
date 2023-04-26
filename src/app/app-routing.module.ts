@@ -5,6 +5,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { CartComponent } from 'src/app/components/pages/cart/cart.component';
 import { ProductDetailsComponent } from './components/pages/product-details/product-details.component';
 import { ShippingComponent } from './components/pages/shipping/shipping.component';
+import { LifeCycleComponent } from './components/pages/life-cycle/life-cycle.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'products/:productId', component: ProductDetailsComponent },
   { path: 'shipping', component: ShippingComponent },
+  { path: 'life-cycle', component: LifeCycleComponent },
 ];
 
 @NgModule({

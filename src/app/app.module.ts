@@ -14,12 +14,14 @@ import { CartComponent } from './components/pages/cart/cart.component';
 import { ProductDetailsComponent } from './components/pages/product-details/product-details.component'; 
 import { HttpClientModule } from '@angular/common/http';
 import { ShippingComponent } from './components/pages/shipping/shipping.component';
-import { ReactiveFormsModule  } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule  } from "@angular/forms";
 import { OnChangeTestComponent } from './components/atoms/on-change-test/on-change-test.component';
 import { PeekABooDirective } from './directives/peek-a-boo.directive';
 import { LifeCycleComponent } from './components/pages/life-cycle/life-cycle.component';
 import { PeekABooParentComponent } from './components/organisms/peek-a-boo-parent/peek-a-boo-parent.component';
 import { PeekABooComponent } from './components/organisms/peek-a-boo/peek-a-boo.component';
+import { SpyDirective } from './directives/spy.directive';
+import { SpyParentComponent } from './components/organisms/spy/spy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,9 @@ import { PeekABooComponent } from './components/organisms/peek-a-boo/peek-a-boo.
     PeekABooDirective,
     LifeCycleComponent,
     PeekABooParentComponent,
-    PeekABooComponent
+    PeekABooComponent,
+    SpyDirective,
+    SpyParentComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ import { PeekABooComponent } from './components/organisms/peek-a-boo/peek-a-boo.
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent] 

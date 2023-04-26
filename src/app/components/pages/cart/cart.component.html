@@ -22,5 +22,14 @@
     <label for="address">Address</label>
     <input formControlName="address" type="text">
   </div>
+  
+  <div>
+    <label>NO BINDING</label>
+    <input type="text">
+  </div>
   <button class="button" type="submit">Purchase</button>
 </form>
+<!-- <app-on-change-test [outer-name]="checkoutForm.getRawValue().name"> -->
+<app-on-change-test [outer-name]="checkoutForm.getRawValue().name">
+
+</app-on-change-test>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -7,11 +7,11 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent {
+export class CartComponent implements OnChanges {
   items = this.cartService.getItems();
 
   checkoutForm = this.formBuilder.group({
-    name: '',
+    name: 'cart - name',
     address: ''
   })
   constructor(
@@ -21,8 +21,13 @@ export class CartComponent {
 
   onSubmit = (): void => {
     // Process checkout data here
+    console.log("cart this", this);
     this.items = this.cartService.clearCart();
     console.warn('Your order has been submitted', this.checkoutForm.value);
     this.checkoutForm.reset();
+  }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    
   }
 }

@@ -14,7 +14,9 @@ import { CartComponent } from './components/pages/cart/cart.component';
 import { ProductDetailsComponent } from './components/pages/product-details/product-details.component'; 
 import { HttpClientModule } from '@angular/common/http';
 import { ShippingComponent } from './components/pages/shipping/shipping.component';
-import { ReactiveFormsModule  } from "@angular/forms"
+import { ReactiveFormsModule  } from "@angular/forms";
+import { OnChangeTestComponent } from './components/atoms/on-change-test/on-change-test.component';
+import { PeekABooDirective } from './directives/peek-a-boo.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,9 @@ import { ReactiveFormsModule  } from "@angular/forms"
     // ProductAlertsComponent,
     CartComponent,
     ProductDetailsComponent,
-    ShippingComponent
+    ShippingComponent,
+    OnChangeTestComponent,
+    PeekABooDirective
   ],
   imports: [
     BrowserModule,

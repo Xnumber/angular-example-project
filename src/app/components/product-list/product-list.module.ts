@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductListComponent } from './product-list.component';
 import { ProductAlertsComponent } from '../atoms/product-alerts/product-alerts.component';
 import { CommonModule } from '@angular/common';
+import { TopBarComponent } from '../organisms/top-bar/top-bar.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
 @NgModule({
 	declarations: [
 		ProductListComponent,
-		ProductAlertsComponent
+		ProductAlertsComponent,
 	],
 	imports: [
 		CommonModule,

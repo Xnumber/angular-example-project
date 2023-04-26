@@ -22,6 +22,8 @@ import { PeekABooParentComponent } from './components/organisms/peek-a-boo-paren
 import { PeekABooComponent } from './components/organisms/peek-a-boo/peek-a-boo.component';
 import { SpyDirective } from './directives/spy.directive';
 import { SpyParentComponent } from './components/organisms/spy/spy.component';
+import { OnChangesComponent } from './components/organisms/on-changes/on-changes.component';
+import { OnChangesParentComponent } from './components/organisms/on-changes-parent/on-changes-parent.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,9 @@ import { SpyParentComponent } from './components/organisms/spy/spy.component';
     PeekABooParentComponent,
     PeekABooComponent,
     SpyDirective,
-    SpyParentComponent
+    SpyParentComponent,
+    OnChangesComponent,
+    OnChangesParentComponent
   ],
   imports: [
     BrowserModule,

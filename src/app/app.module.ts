@@ -24,6 +24,8 @@ import { SpyDirective } from './directives/spy.directive';
 import { SpyParentComponent } from './components/organisms/spy/spy.component';
 import { OnChangesComponent } from './components/organisms/on-changes/on-changes.component';
 import { OnChangesParentComponent } from './components/organisms/on-changes-parent/on-changes-parent.component';
+import { DoCheckParentComponent } from './components/organisms/do-check-parent/do-check-parent.component';
+import { DoCheckComponent } from './components/organisms/do-check/do-check.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,9 @@ import { OnChangesParentComponent } from './components/organisms/on-changes-pare
     SpyDirective,
     SpyParentComponent,
     OnChangesComponent,
-    OnChangesParentComponent
+    OnChangesParentComponent,
+    DoCheckParentComponent,
+    DoCheckComponent
   ],
   imports: [
     BrowserModule,

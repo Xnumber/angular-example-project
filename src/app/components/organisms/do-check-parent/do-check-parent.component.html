@@ -1,0 +1,18 @@
+<h2>{{title}}</h2>
+<label for="power-input">Power: </label>
+<input type="text" id="power-input" [(ngModel)]="power">
+<label for="hero-name">Hero.name: </label>
+<input type="text" id="hero-name" [(ngModel)]="hero.name">
+<button type="button" (click)="reset()">Reset Log</button>
+
+<do-check [hero]="hero" [power]="'child 1 power'" #child1></do-check>
+
+<do-check [hero]="hero" [power]="'child 2 power'" #child2></do-check>
+
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->

@@ -26,6 +26,9 @@ import { OnChangesComponent } from './components/organisms/on-changes/on-changes
 import { OnChangesParentComponent } from './components/organisms/on-changes-parent/on-changes-parent.component';
 import { DoCheckParentComponent } from './components/organisms/do-check-parent/do-check-parent.component';
 import { DoCheckComponent } from './components/organisms/do-check/do-check.component';
+import { AfterViewParentComponent } from './components/organisms/after-view-parent/after-view-parent.component';
+import { AfterViewComponent } from './components/organisms/after-view/after-view.component';
+import { ChildViewComponent } from './components/organisms/child-view/child-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +50,10 @@ import { DoCheckComponent } from './components/organisms/do-check/do-check.compo
     OnChangesComponent,
     OnChangesParentComponent,
     DoCheckParentComponent,
-    DoCheckComponent
+    DoCheckComponent,
+    AfterViewParentComponent,
+    AfterViewComponent,
+    ChildViewComponent
   ],
   imports: [
     BrowserModule,

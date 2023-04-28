@@ -30,6 +30,8 @@ import { AfterViewParentComponent } from './components/organisms/after-view-pare
 import { AfterViewComponent } from './components/organisms/after-view/after-view.component';
 import { ChildViewComponent } from './components/organisms/child-view/child-view.component';
 import { MultipleChildComponent } from './components/molecules/multiple-child/multiple-child.component';
+import { ProviderQueryTesting2Directive } from './directives/provider-query-testing2.directive';
+import { ProviderQueryTesting3Directive } from './directives/provider-query-testing3.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,9 @@ import { MultipleChildComponent } from './components/molecules/multiple-child/mu
     AfterViewParentComponent,
     AfterViewComponent,
     ChildViewComponent,
-    MultipleChildComponent
+    MultipleChildComponent,
+    ProviderQueryTesting2Directive,
+    ProviderQueryTesting3Directive,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,9 @@
 import { Component, ViewChildren, QueryList, AfterViewInit  } from '@angular/core';
 import { LoggerService } from 'src/app/services/logger-service.service';
 import { MultipleChildComponent } from '../../molecules/multiple-child/multiple-child.component';
+import { ProviderQueryTesting } from 'src/app/directives/provider-query-testing';
+
+let forTestName = 0;
 @Component({
   selector: 'after-view-parent',
   template: `
@@ -15,23 +18,38 @@ import { MultipleChildComponent } from '../../molecules/multiple-child/multiple-
   </div>
 
   <ng-container *ngFor="let t of testN">
-    <app-multiple-child *ngIf="t < 3" [n]="t">
+    <app-multiple-child *ngIf="t < 3" [n]="t" class="query" [testName]="testName" [name]="testName">
+    </app-multiple-child>
+    <app-multiple-child *ngIf="t === 3" [n]="t" appProviderQueryTesting2 [testName]="testName">
+    </app-multiple-child>
+    <app-multiple-child *ngIf="t > 3" [n]="t" appProviderQueryTesting3 [testName]="testName">
     </app-multiple-child>
   </ng-container>
-
   `,
   providers: [LoggerService]
 })
+
 export class AfterViewParentComponent implements AfterViewInit {
   show = true;
   testN = [1,2,3, 4, 5, 6]
+  testName = "clement"
   @ViewChildren(MultipleChildComponent) viewChildren!: QueryList<MultipleChildComponent>;
-  constructor(public logger: LoggerService) { }
+  @ViewChildren(ProviderQueryTesting) viewChildrenDirective!: QueryList<ProviderQueryTesting>;
+  constructor(public logger: LoggerService) { 
+    setInterval(() => {
+      forTestName += 1;
+      this.testName += String(forTestName)
+    }, 2000)
+  }
 
   ngAfterViewInit(): void {
       if(this.viewChildren) {
         console.log("this.viewChildren.map(c => c.n)")
         console.log(this.viewChildren.map(c => c.n))
+      }
+      if(this.viewChildrenDirective) {
+        console.log("this.viewChildrenDirective.map(c => c.t)")
+        console.log(this.viewChildrenDirective.map(c => c.t))
       }
   }
 

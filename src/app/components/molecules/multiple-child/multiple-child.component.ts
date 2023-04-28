@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 
 export class MultipleChildComponent {
   @Input() n!: number;
+  @Input() testName!: string;
 }

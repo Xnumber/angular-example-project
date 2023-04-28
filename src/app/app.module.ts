@@ -29,6 +29,7 @@ import { DoCheckComponent } from './components/organisms/do-check/do-check.compo
 import { AfterViewParentComponent } from './components/organisms/after-view-parent/after-view-parent.component';
 import { AfterViewComponent } from './components/organisms/after-view/after-view.component';
 import { ChildViewComponent } from './components/organisms/child-view/child-view.component';
+import { MultipleChildComponent } from './components/molecules/multiple-child/multiple-child.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { ChildViewComponent } from './components/organisms/child-view/child-view
     DoCheckComponent,
     AfterViewParentComponent,
     AfterViewComponent,
-    ChildViewComponent
+    ChildViewComponent,
+    MultipleChildComponent
   ],
   imports: [
     BrowserModule,

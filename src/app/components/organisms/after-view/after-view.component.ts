@@ -16,7 +16,7 @@ import { LoggerService } from 'src/app/services/logger-service.service';
 export class AfterViewComponent implements  AfterViewChecked, AfterViewInit {
   comment = '';
   private prevHero = '';
-  logs
+  logs;
   // Query for a VIEW child of type `ChildViewComponent`
   @ViewChild(ChildViewComponent) viewChild!: ChildViewComponent;
 
@@ -37,10 +37,10 @@ export class AfterViewComponent implements  AfterViewChecked, AfterViewInit {
   ngAfterViewChecked() {
     // viewChild is updated after the view has been checked
     if (this.prevHero === this.viewChild.hero) {
-      console.log(this.viewChild.hero)
+      // console.log(this.viewChild.hero)
       this.logIt('AfterViewChecked (no change)');
     } else {
-      console.log("!==", this.viewChild.hero)
+      // console.log("!==", this.viewChild.hero)
       // console.log(this.viewChild.hero)
       this.prevHero = this.viewChild.hero;
       this.logIt('AfterViewChecked');
@@ -60,16 +60,16 @@ export class AfterViewComponent implements  AfterViewChecked, AfterViewInit {
   private logIt(method: string) {
     const child = this.viewChild;
     if (this.viewChild) {
-      console.log("log it", this.viewChild.hero)
+      // console.log("log it", this.viewChild.hero)
     }
 
     if (child) {
-      console.log("log it child.hero", child.hero)
+      // console.log("log it child.hero", child.hero)
     }
     const message = `${method}: ${child ? child.hero : 'no'} child view`;
-    console.log("log it message", message)
+    // console.log("log it message", message)
     this.logger.log(message);
-    console.log("this.logger.logs", this.logger.logs)
+    // console.log("this.logger.logs", this.logger.logs)
   }
   // ...
 }

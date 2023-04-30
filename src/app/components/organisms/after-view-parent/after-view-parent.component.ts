@@ -35,7 +35,7 @@ export class AfterViewParentComponent implements AfterViewInit {
   testName = "clement"
   @ViewChildren(MultipleChildComponent) viewChildren!: QueryList<MultipleChildComponent>;
   @ViewChildren(ProviderQueryTesting) viewChildrenDirective!: QueryList<ProviderQueryTesting>;
-  constructor(public logger: LoggerService) { 
+  constructor(public logger: LoggerService) {
     // setInterval(() => {
     //   forTestName += 1;
     //   this.testName += String(forTestName)

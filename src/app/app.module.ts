@@ -36,6 +36,8 @@ import { AfterContentParentComponent } from './components/organisms/after-conten
 import { AfterContentComponent } from './components/organisms/after-content/after-content.component';
 import { ChildComponent } from './components/molecules/child/child.component';
 import { Child2Component } from './components/molecules/child2/child2.component';
+import { CounterParentComponent } from './components/organisms/counter-parent/counter-parent.component';
+import { CounterComponent } from './components/molecules/counter/counter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +70,8 @@ import { Child2Component } from './components/molecules/child2/child2.component'
     AfterContentComponent,
     ChildComponent,
     Child2Component,
+    CounterParentComponent,
+    CounterComponent,
   ],
   imports: [
     BrowserModule,

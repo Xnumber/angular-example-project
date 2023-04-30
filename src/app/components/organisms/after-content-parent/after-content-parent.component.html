@@ -1,0 +1,18 @@
+
+<div class="parent">
+	<h2>AfterContent</h2>
+
+	<div *ngIf="show">
+	<app-after-content>
+		<app-child></app-child>
+		<app-child2 #child22 child22 child2Name="N22"></app-child2>
+		<app-child2 child21 child2Name="N21"></app-child2>
+	</app-after-content>`
+	</div>
+
+	<div class="info">
+	<h3>AfterContent Logs</h3>
+	<button type="button" (click)="reset()">Reset</button>
+	<div *ngFor="let msg of logger.logs" class="log">{{msg}}</div>
+	</div>
+</div>

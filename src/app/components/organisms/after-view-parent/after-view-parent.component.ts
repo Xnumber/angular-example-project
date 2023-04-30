@@ -36,10 +36,10 @@ export class AfterViewParentComponent implements AfterViewInit {
   @ViewChildren(MultipleChildComponent) viewChildren!: QueryList<MultipleChildComponent>;
   @ViewChildren(ProviderQueryTesting) viewChildrenDirective!: QueryList<ProviderQueryTesting>;
   constructor(public logger: LoggerService) { 
-    setInterval(() => {
-      forTestName += 1;
-      this.testName += String(forTestName)
-    }, 2000)
+    // setInterval(() => {
+    //   forTestName += 1;
+    //   this.testName += String(forTestName)
+    // }, 2000)
   }
 
   ngAfterViewInit(): void {

@@ -12,9 +12,9 @@ export class ProviderQueryTesting2Directive implements OnChanges, OnInit{
   t = 2;
   @Input() name!: string;
   ngOnInit(): void {
-    console.log("ProviderQueryTesting2Directive: name", this.name)
+    // console.log("ProviderQueryTesting2Directive: name", this.name)
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("name:ProviderQueryTesting2Directive", changes)
+    // console.log("name:ProviderQueryTesting2Directive", changes)
   }
 }

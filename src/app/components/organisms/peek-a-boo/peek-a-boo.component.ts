@@ -68,7 +68,7 @@ export class PeekABooComponent extends PeekABooDirective implements
 
   // Beware! Called frequently!
   // Called in every change detection cycle anywhere on the page
-  ngAfterViewChecked() { this.logIt('AfterViewChecked'); }
+  ngAfterViewChecked() { this.logIt('AfterViewChecked'); console.log("ngAfterViewChecked:peek-a-boo")}
 
   ngOnDestroy() { this.logIt('OnDestroy'); }
 }

@@ -1,0 +1,36 @@
+<h2>Next Steps</h2>
+  <p>What do you want to do next with your app?</p>
+  <!-- [(ngModel)]="selected" -->
+  <input [(ngModel)]="selected">
+
+  <div class="card-container">
+    <button class="card card-small" (click)="selected = 'component'" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>New Component</span>
+    </button>
+
+    <button class="card card-small" (click)="selected = 'material'" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Angular Material</span>
+    </button>
+
+    <button class="card card-small" (click)="selected = 'pwa'" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Add PWA Support</span>
+    </button>
+
+    <button class="card card-small" (click)="selected = 'dependency'" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Add Dependency</span>w
+    </button>
+
+    <button class="card card-small" (click)="selected = 'test'" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Run and Watch Tests</span>
+    </button>
+
+    <button class="card card-small" (click)="selected = 'build'" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Build for Production</span>
+    </button>
+</div>

@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChild, ContentChildren, QueryList } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChild, ContentChildren, DoCheck, Input, OnChanges, OnInit, QueryList, SimpleChanges } from '@angular/core';
 import { ChildComponent } from '../../molecules/child/child.component';
 import { LoggerService } from 'src/app/services/logger-service.service';
 import { Child2Component } from '../../molecules/child2/child2.component';
@@ -9,10 +9,10 @@ import { Child2Component } from '../../molecules/child2/child2.component';
   styleUrls: ['./after-content.component.scss']
 })
 
-export class AfterContentComponent implements AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit {
+export class AfterContentComponent implements OnChanges, OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, DoCheck {
   private prevHero = '';
   comment = '';
-
+  @Input() t!: string;
   // Query for a CONTENT child of type `ChildComponent`
   @ContentChild(ChildComponent) contentChild!: ChildComponent;
   @ContentChild(Child2Component) contentChild21!: Child2Component;
@@ -23,13 +23,26 @@ export class AfterContentComponent implements AfterContentChecked, AfterContentI
     this.logIt('AfterContent constructor');
   }
 
+  ngOnInit(): void {
+    // console.log("ngOnInit")
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // console.log("OnChanges")
+  }
+
+  ngDoCheck(): void {
+    // console.log("DoCheck")
+  }
+
   ngAfterContentInit() {
     // contentChild is set after the content has been initialized
     this.logIt('AfterContentInit');
     this.doSomething();
-    // if (this.contentChild21) {
-    //   console.log(this.contentChild21.child2Name)
-    // }
+    if (this.contentChild21) {
+      // console.log("AfterContentInit")
+      // console.log(this.contentChild21.child2Name)
+    }
 
     // if (this.contentChild22) {
     //   console.log(this.contentChild22.child2Name)
@@ -42,6 +55,7 @@ export class AfterContentComponent implements AfterContentChecked, AfterContentI
 
   ngAfterContentChecked() {
     // contentChild is updated after the content has been checked
+    // console.log("AfterContentChecked")
     if (this.prevHero === this.contentChild.hero) {
       this.logIt('AfterContentChecked (no change)');
     } else {

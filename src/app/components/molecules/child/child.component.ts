@@ -9,7 +9,7 @@ export class ChildComponent implements DoCheck {
 
   hero = 'Magneta';
   ngDoCheck(): void {
-    console.log("this.hero")
-    console.log(this.hero)
+    // console.log("this.hero")
+    // console.log(this.hero)
   }
 }

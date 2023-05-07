@@ -9,7 +9,13 @@ export class AppComponent {
   title = 'angular-example-project';
   fromAppComponent = "fromAppComponent";
   drawerOpenedInAppComponent = false;
+  selected: string = "material"
+  
   onDrawerToggled(e: boolean) {
     this.drawerOpenedInAppComponent = e;
+  }
+  
+  onSelectedNotified(e: string) {
+    this.selected = e;
   }
 }

@@ -35,6 +35,9 @@ export class PeekABooParentComponent {
     this.hookLog = logger.logs;
   }
 
+  ngAfterViewChecked() {
+    console.log("ngAfterViewChecked:peek-a-boo-parent")
+  }
   toggleChild() {
     this.hasChild = !this.hasChild;
     if (this.hasChild) {

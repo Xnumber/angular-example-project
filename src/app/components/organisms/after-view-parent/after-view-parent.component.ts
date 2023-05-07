@@ -1,4 +1,4 @@
-import { Component, ViewChildren, QueryList, AfterViewInit  } from '@angular/core';
+import { Component, ViewChildren, QueryList, AfterViewInit, ChangeDetectionStrategy, AfterViewChecked, OnInit, NgZone  } from '@angular/core';
 import { LoggerService } from 'src/app/services/logger-service.service';
 import { MultipleChildComponent } from '../../molecules/multiple-child/multiple-child.component';
 import { ProviderQueryTesting } from 'src/app/directives/provider-query-testing';
@@ -14,7 +14,7 @@ let forTestName = 0;
   <div class="info">
     <h3>AfterView Logs</h3>
     <button type="button" (click)="reset()">Reset</button>
-    <div *ngFor="let msg of logger.logs" class="log">{{msg}}</div>
+    <div *ngFor="let msg of logs" class="log">{{msg}}</div>
   </div>
 
   <ng-container *ngFor="let t of testN">
@@ -26,31 +26,45 @@ let forTestName = 0;
     </app-multiple-child>
   </ng-container>
   `,
+  // changeDetection: ChangeDetectionStrategy.Default,
   providers: [LoggerService]
 })
 
-export class AfterViewParentComponent implements AfterViewInit {
+export class AfterViewParentComponent implements OnInit, AfterViewInit, AfterViewChecked {
   show = true;
   testN = [1,2,3, 4, 5, 6]
   testName = "clement"
+  logs: string[] = []
   @ViewChildren(MultipleChildComponent) viewChildren!: QueryList<MultipleChildComponent>;
   @ViewChildren(ProviderQueryTesting) viewChildrenDirective!: QueryList<ProviderQueryTesting>;
   constructor(public logger: LoggerService) {
+    // console.log("constructor")
     // setInterval(() => {
-    //   forTestName += 1;
-    //   this.testName += String(forTestName)
-    // }, 2000)
+      //   forTestName += 1;
+      //   this.testName += String(forTestName)
+      // }, 2000)
+  }
+    
+  ngOnInit(): void {
+    this.logs = this.logger.logs
   }
 
   ngAfterViewInit(): void {
       if(this.viewChildren) {
-        console.log("this.viewChildren.map(c => c.n)")
-        console.log(this.viewChildren.map(c => c.n))
+        // console.log("this.viewChildren.map(c => c.n)")
+        // console.log(this.viewChildren.map(c => c.n))
       }
+      
       if(this.viewChildrenDirective) {
-        console.log("this.viewChildrenDirective.map(c => c.t)")
-        console.log(this.viewChildrenDirective.map(c => c.t))
+        // console.log("this.viewChildrenDirective.map(c => c.t)")
+        // console.log(this.viewChildrenDirective.map(c => c.t))
       }
+  }
+
+  ngAfterViewChecked(): void {
+
+    console.log("ngAfterViewChecked:after-view-parent")
+    // this.logger.test();
   }
 
   reset() {

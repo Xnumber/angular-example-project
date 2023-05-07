@@ -38,6 +38,10 @@ import { ChildComponent } from './components/molecules/child/child.component';
 import { Child2Component } from './components/molecules/child2/child2.component';
 import { CounterParentComponent } from './components/organisms/counter-parent/counter-parent.component';
 import { CounterComponent } from './components/molecules/counter/counter.component';
+import { NextComponent } from './components/organisms/next/next.component';
+import { TerminalComponent } from './components/organisms/terminal/terminal.component';
+import { MessageComponent } from './components/message/message.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +76,9 @@ import { CounterComponent } from './components/molecules/counter/counter.compone
     Child2Component,
     CounterParentComponent,
     CounterComponent,
+    NextComponent,
+    TerminalComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,

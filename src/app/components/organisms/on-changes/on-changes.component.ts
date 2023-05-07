@@ -20,8 +20,8 @@ export class OnChangesComponent implements OnChanges {
   changeLog: string[] = [];
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(this.hero);
-    console.log(this.power);
+    // console.log(this.hero);
+    // console.log(this.power);
     
     for (const propName in changes) {
       const chng = changes[propName];

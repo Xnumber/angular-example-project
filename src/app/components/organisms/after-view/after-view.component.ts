@@ -9,12 +9,15 @@ import { LoggerService } from 'src/app/services/logger-service.service';
       <app-child-view></app-child-view>
     <div>child view ends</div>
     <p *ngIf="comment" class="comment">
-      {{comment}}
+      {{ comment }} - comment
+    </p>
+    <p class="comment">
+      {{ comment }} - comment
     </p>
   `
 })
 export class AfterViewComponent implements  AfterViewChecked, AfterViewInit {
-  comment = '';
+  comment = 'comment';
   private prevHero = '';
   logs;
   // Query for a VIEW child of type `ChildViewComponent`
@@ -23,6 +26,7 @@ export class AfterViewComponent implements  AfterViewChecked, AfterViewInit {
   constructor(private logger: LoggerService) {
     this.logIt('AfterView constructor');
     this.logs = logger.logs;
+    this.comment = "comment"
   }
 
   ngAfterViewInit() {
@@ -35,11 +39,13 @@ export class AfterViewComponent implements  AfterViewChecked, AfterViewInit {
   }
 
   ngAfterViewChecked() {
+    console.log("ngAfterViewChecked:after-view")
     // viewChild is updated after the view has been checked
     if (this.prevHero === this.viewChild.hero) {
       // console.log(this.viewChild.hero)
       this.logIt('AfterViewChecked (no change)');
     } else {
+      // console.log(123)
       // console.log("!==", this.viewChild.hero)
       // console.log(this.viewChild.hero)
       this.prevHero = this.viewChild.hero;
@@ -50,11 +56,16 @@ export class AfterViewComponent implements  AfterViewChecked, AfterViewInit {
 
   // This surrogate for real business logic sets the `comment`
   private doSomething() {
-    const c = this.viewChild.hero.length > 10 ? "That's a long name" : '';
-    if (c !== this.comment) {
-      // Wait a tick because the component's view has already been checked
-      this.logger.tick_then(() => this.comment = c);
-    }
+    // const c = this.viewChild.hero.length > 10 ? "That's a long name" : '';
+    this.logger.tick()
+    // if (c !== this.comment) {
+    //   console.log("comment")
+    //   this.logger.tick_then(() => {
+    //     console.log("this.comment = c")
+    //     this.comment = c
+    //   });
+    //   // Wait a tick because the component's view has already been checked
+    // }
   }
 
   private logIt(method: string) {

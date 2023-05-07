@@ -11,7 +11,7 @@ export class Child2Component {
   @Input() child2Name!: string;
   
   ngDoCheck(): void {
-    console.log("this.hero")
-    console.log(this.hero)
+    // console.log("this.hero")
+    // console.log(this.hero)
   }
 }

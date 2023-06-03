@@ -42,6 +42,10 @@ import { NextComponent } from './components/organisms/next/next.component';
 import { TerminalComponent } from './components/organisms/terminal/terminal.component';
 import { MessageComponent } from './components/message/message.component';
 
+// import { UseExsistingComponent } from './components/organisms/use-exsisting/use-exsisting.component';
+// import { TabItemComponent } from './components/molecules/tab-item/tab-item.component';
+// import { TabsComponent } from './components/organisms/tabs/tabs.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +83,9 @@ import { MessageComponent } from './components/message/message.component';
     NextComponent,
     TerminalComponent,
     MessageComponent,
+    // UseExsistingComponent,
+    // TabItemComponent,
+    // TabsComponent,
   ],
   imports: [
     BrowserModule,

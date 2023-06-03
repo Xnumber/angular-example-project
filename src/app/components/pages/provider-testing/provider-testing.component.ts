@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BetterLoggerService } from 'src/app/services/better-logger.service';
-import { LoggerDependencyService } from 'src/app/services/logger-dependency.service';
+// import { LoggerDependencyService } from 'src/app/services/logger-dependency.service';
 import { LoggerService } from 'src/app/services/logger.service';
+import { UseFactoryTestingServiceProvider } from 'src/app/services/use-factory-testing.provider';
+import { UseFactoryTestingService } from 'src/app/services/use-factory-testing.service';
 
 @Component({
   selector: 'app-provider-testing',
@@ -32,19 +34,23 @@ import { LoggerService } from 'src/app/services/logger.service';
     //   { provide: LoggerService, useClass: BetterLoggerService }
     // ],
     
-    
   // 具有相同屬性的類別，使用已經存在的實體
   // https://angular.tw/guide/dependency-injection-providers#alias-providers-useexisting
   providers: [
-    { provide: LoggerService, useExisting: BetterLoggerService }
+    // LoggerService,
+    { provide: LoggerService, useExisting: BetterLoggerService },
+    UseFactoryTestingServiceProvider
   ],
 })
 
 export class ProviderTestingComponent implements OnInit {
-  constructor(private logger: LoggerService){}
+  constructor(private logger: LoggerService, private useFactoryTestingService: UseFactoryTestingService){}
   // constructor(private logger: BetterLoggerService){}
   log!: string;
+  useFactoryTestingServiceLog!: string
+  
   ngOnInit(): void {
       this.log = this.logger.log;
+      this.useFactoryTestingServiceLog = this.useFactoryTestingService.useFactoryLog;
   }
 }

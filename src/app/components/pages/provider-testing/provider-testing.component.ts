@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { APP_CONFIG, AppConfig, appConfig } from 'src/app/app.config';
 import { BetterLoggerService } from 'src/app/services/better-logger.service';
 // import { LoggerDependencyService } from 'src/app/services/logger-dependency.service';
 import { LoggerService } from 'src/app/services/logger.service';
@@ -39,13 +40,27 @@ import { UseFactoryTestingService } from 'src/app/services/use-factory-testing.s
   providers: [
     // LoggerService,
     { provide: LoggerService, useExisting: BetterLoggerService },
-    UseFactoryTestingServiceProvider
+    UseFactoryTestingServiceProvider,
+    // { provide: APP_CONFIG , useValue: appConfig}
   ],
 })
 
 export class ProviderTestingComponent implements OnInit {
-  constructor(private logger: LoggerService, private useFactoryTestingService: UseFactoryTestingService){}
+ 
+  // test: AppConfig2 = new AppConfig2;
+  constructor(
+    private logger: LoggerService,
+    private useFactoryTestingService: UseFactoryTestingService,
+    @Inject("APP_CONFIG") config: AppConfig
+    ){
+    console.log("config.title")
+    console.log(config)
+    config.title += "123 Modified";
+    this.configTitle = config.title;
+    // this.test.title = "www"
+  }
   // constructor(private logger: BetterLoggerService){}
+  configTitle!: string;
   log!: string;
   useFactoryTestingServiceLog!: string
   

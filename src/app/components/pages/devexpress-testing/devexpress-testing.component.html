@@ -1,4 +1,4 @@
-<p>devexpress-testing works!</p>
+qqq<!-- <p>devexpress-testing works!</p>
 <input #input [(ngModel)]="inputValue" type="text">
 <div #output></div>
 {{inputValue2}}
@@ -69,4 +69,40 @@
       </dx-bullet>
     </div>
   </div>
+</dx-data-grid> -->
+<dx-data-grid
+  [dataSource]="[{a: 1, b: 2}, {a: 3, b: 6}]"
+  [editing]="{mode: 'popup'}"
+  (onRowPrepared)="onRowPrepared($event)"
+  [repaintChangesOnly]="false"
+>
+  <dxo-editing [allowUpdating]="true">
+    <dxo-form
+      [customizeItem]="customizeItem"
+      (onFieldDataChanged)="form_fieldDataChanged($event)">
+    >
+      <dxi-item dataField="a"  ></dxi-item>
+      <dxi-item dataField="b" [visible]="isFVisible"></dxi-item>
+      <button (click)="isFVisible = false">
+      </button>
+      </dxo-form>
+  </dxo-editing>
+  <!-- [setCellValue]="onSetValue" -->
+
+  <dxi-column caption="a" dataField="a" [setCellValue]="setCellValue"
+  >
+  </dxi-column>
+  <dxi-column caption="b" dataField="b"></dxi-column>
 </dx-data-grid>
+
+<!-- tooltip -->
+<!-- https://supportcenter.devexpress.com/ticket/details/t845698/datagrid-how-to-show-custom-tooltips-for-cells -->
+<!-- https://js.devexpress.com/Demos/WidgetsGallery/Demo/Tooltip/Overview/Angular/Light/ -->
+
+<!-- form from data possibly -->
+<!-- https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxForm/Configuration/#items -->
+<!-- https://js.devexpress.com/Documentation/Guide/UI_Components/Form/Configure_Simple_Items/#Create_a_Simple_Item -->
+<!-- <dx-form
+  [(formData)]="employee"
+  [items]="['firstName', 'lastName', 'position']">
+</dx-form> -->

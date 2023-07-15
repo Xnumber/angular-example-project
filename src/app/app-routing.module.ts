@@ -25,7 +25,8 @@ const routes: Routes = [
   },
   { path: 'another-children-routing', loadChildren: () => import('./components/pages/another-children-routing/another-children-routing.module').then(m => m.AnotherChildrenRoutingModule) },
   { path: 'devexpress-testing', loadChildren: () => import('./components/pages/devexpress-testing/devexpress-testing.module').then(m => m.DevexpressTestingModule) },
-  { path: 'provider-testing', loadChildren: () => import('./components/pages/provider-testing/provider-testing.module').then(m => m.ProviderTestingModule) }
+  { path: 'provider-testing', loadChildren: () => import('./components/pages/provider-testing/provider-testing.module').then(m => m.ProviderTestingModule) },
+  { path: 'project-testing', loadChildren: () => import('./components/project-testing/project-testing.module').then(m => m.ProjectTestingModule) },
 ];
 
 @NgModule({

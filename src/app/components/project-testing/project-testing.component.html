@@ -1,0 +1,32 @@
+<p>project-testing works!</p>
+<ng-template #sample>
+	<p>sample</p>
+</ng-template>
+<ng-template #sample2>
+	<p>sample2</p>
+</ng-template>
+<ng-container *ngIf="visible">
+	<div *ngTemplateOutlet="sample">
+	
+	</div>
+</ng-container>
+
+<ng-container *ngIf="!visible">
+	<div *ngTemplateOutlet="sample2">
+		
+	</div>
+</ng-container>
+
+<ng-template #sample3 let-num="num">
+	<p>sample3</p> - {{num}}
+</ng-template>
+
+<div *ngFor="let n of numbers">
+	<ng-container *ngTemplateOutlet="sample3; context: { num: n }">
+
+	</ng-container>
+</div>	
+
+<ng-template appExampleZippyContent>
+	It depends on what you do with it.
+</ng-template>

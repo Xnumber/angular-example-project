@@ -7,6 +7,7 @@ import {
   DxDataGridModule,
   DxBulletModule,
   DxTemplateModule,
+  DxFormModule,
 } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
 
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     DxDataGridModule,
     DxTemplateModule,
-    DxBulletModule
+    DxBulletModule,
+    DxFormModule
   ]
 })
 export class DevexpressTestingModule { }

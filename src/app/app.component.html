@@ -7,12 +7,20 @@
       accountId="account-id"
       (notify)="onDrawerToggled($event)"
     >
-    </sidenav-autosize-example>
+  </sidenav-autosize-example>
+</div>
+<div class="l-app__container">
+  <section [ngStyle]="{'color': drawerOpenedInAppComponent ? 'green': 'red'}">
+    drawerOpenedInAppComponent: {{ drawerOpenedInAppComponent }}
+  </section>
+  <div>
+    configTitle
   </div>
-  <div class="l-app__container">
-    <section [ngStyle]="{'color': drawerOpenedInAppComponent ? 'green': 'red'}">
-      drawerOpenedInAppComponent: {{ drawerOpenedInAppComponent }}
-    </section>
+  <div>
+    <h2>
+      {{configTitle}}
+    </h2>
+  </div>
     <router-outlet></router-outlet>
   </div>
 </div>

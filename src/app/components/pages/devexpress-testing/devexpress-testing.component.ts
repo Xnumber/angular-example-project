@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { DxDataGridComponent } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
+import { Column, RowPreparedEvent } from 'devextreme/ui/data_grid';
+import { Item, SimpleItem } from 'devextreme/ui/form';
 import { DevexpressTestingService } from 'src/app/services/devexpress-testing.service';
 // https://js.devexpress.com/Demos/WidgetsGallery/Demo/DataGrid/Overview/Angular/Light/
 @Component({
@@ -8,10 +11,50 @@ import { DevexpressTestingService } from 'src/app/services/devexpress-testing.se
   styleUrls: ['./devexpress-testing.component.scss']
 })
 export class DevexpressTestingComponent {
+  @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;   
   dataSource: DataSource;
   inputValue: string = '';
   inputValue2: string = '';
   collapsed = false;
+  isFVisible = true;
+
+  // https://js.devexpress.com/Documentation/22_2/Guide/UI_Components/DataGrid/How_To/Dynamically_Change_Form_Item_Properties_in_the_Editing_State/
+  customizeItem = (item: Column) => {
+    alert(123)
+    if (item && item.dataField === 'a') {
+      const gridInstance = this.dataGrid.instance;
+      const editRowKey = gridInstance.option('editing.editRowKey');
+      const rowIndex = gridInstance.getRowIndexByKey(editRowKey);
+      // item.visible = gridInstance.cellValue(rowIndex, "AddressRequired");
+    }
+    const gridInstance = this.dataGrid.instance;
+    const editRowKey = gridInstance.option('editing.editRowKey');
+    const rowIndex = gridInstance.getRowIndexByKey(editRowKey);
+    console.log('gridInstance.cellValue(rowIndex, "a");', gridInstance.cellValue(rowIndex, "a"))
+    // console.log(item)
+    if (item.dataField === 'b' && gridInstance.hasEditData()) {
+      if (gridInstance.cellValue(rowIndex, "a") > 10) {
+        item.visible = false;
+      }
+    }
+  }
+
+
+  form_fieldDataChanged(e: any) {
+    console.log('onFieldDataChanged', e)
+  }
+
+  // onSetValue(e: any) {
+  //   console.log('onSetValue')
+  //   this.isFVisible = false
+  //   console.log('onSetValue', this.isFVisible)
+  // }
+
+
+  setCellValue (newData: any, value: any, currentRowData: any) {
+    newData.a = value;
+    newData.b = 100;
+  }
 
   contentReady = (e: any) => {
     if (!this.collapsed) {
@@ -29,5 +72,18 @@ export class DevexpressTestingComponent {
 
   constructor(service: DevexpressTestingService) {
     this.dataSource = service.getDataSource();
+  }
+  onRowPrepared(e: RowPreparedEvent) {}
+  
+  // customizeItem(e: any) {
+  //   console.log('customizeItem')
+  //   console.log(e)
+  // }
+
+  employee = {
+    firstName: "John",
+    lastName: "Heart",
+    position: "CEO",
+    officeNo: 901
   }
 }

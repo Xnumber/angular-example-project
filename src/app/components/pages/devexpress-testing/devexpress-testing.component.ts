@@ -1,8 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
+import CustomStore from 'devextreme/data/custom_store';
 import DataSource from 'devextreme/data/data_source';
 import { Column, RowPreparedEvent } from 'devextreme/ui/data_grid';
 import { Item, SimpleItem } from 'devextreme/ui/form';
+import { map } from 'rxjs';
 import { DevexpressTestingService } from 'src/app/services/devexpress-testing.service';
 // https://js.devexpress.com/Demos/WidgetsGallery/Demo/DataGrid/Overview/Angular/Light/
 @Component({
@@ -17,7 +20,29 @@ export class DevexpressTestingComponent {
   inputValue2: string = '';
   collapsed = false;
   isFVisible = true;
-
+  lookupDataSource: any;
+  constructor(
+    service: DevexpressTestingService,
+    @Inject(HttpClient) httpClient: HttpClient
+  ) {
+    this.dataSource = service.getDataSource();
+      this.lookupDataSource = {
+        store: new CustomStore({
+            key: "id",
+            loadMode: "raw",
+            load: () => {
+                // Returns an array of objects that have the following structure:
+                // { id: 1, name: "John Doe" }
+                return httpClient.get("https://dummyjson.com/products").pipe(
+                  map((res: any) => res.products)
+                ).toPromise();
+            }
+        }),
+        sort: "name"
+    };
+  }
+  // constructor(@Inject(HttpClient) httpClient: HttpClient){
+  // }
   // https://js.devexpress.com/Documentation/22_2/Guide/UI_Components/DataGrid/How_To/Dynamically_Change_Form_Item_Properties_in_the_Editing_State/
   customizeItem = (item: Column) => {
     alert(123)
@@ -70,9 +95,7 @@ export class DevexpressTestingComponent {
 
   customizeTooltip = (pointsInfo: any) => ({ text: `${parseInt(pointsInfo.originalValue)}%` });
 
-  constructor(service: DevexpressTestingService) {
-    this.dataSource = service.getDataSource();
-  }
+  
   onRowPrepared(e: RowPreparedEvent) {}
   
   // customizeItem(e: any) {

@@ -70,6 +70,10 @@ qqq<!-- <p>devexpress-testing works!</p>
     </div>
   </div>
 </dx-data-grid> -->
+
+
+
+
 <dx-data-grid
   [dataSource]="[{a: 1, b: 2}, {a: 3, b: 6}]"
   [editing]="{mode: 'popup'}"
@@ -81,18 +85,35 @@ qqq<!-- <p>devexpress-testing works!</p>
       [customizeItem]="customizeItem"
       (onFieldDataChanged)="form_fieldDataChanged($event)">
     >
-      <dxi-item dataField="a"  ></dxi-item>
+
+
+
+      <dxi-item dataField="a"></dxi-item>
       <dxi-item dataField="b" [visible]="isFVisible"></dxi-item>
+      <dxi-item dataField="c" [visible]="isFVisible"></dxi-item>
       <button (click)="isFVisible = false">
       </button>
       </dxo-form>
   </dxo-editing>
   <!-- [setCellValue]="onSetValue" -->
 
-  <dxi-column caption="a" dataField="a" [setCellValue]="setCellValue"
+  <dxi-column 
+    caption="a" 
+    dataField="a" 
+    [setCellValue]="setCellValue"
+    [editorOptions]="{ valueChangeEvent: 'keyup' }"
   >
   </dxi-column>
   <dxi-column caption="b" dataField="b"></dxi-column>
+  <dxi-column caption="c" dataField="c">
+      <dxo-lookup
+        [dataSource]="lookupDataSource"
+        displayExpr="title"
+        valueExpr="id"
+      > 
+      <!-- "id" contains the same values as "authorId" -->
+      </dxo-lookup>
+  </dxi-column>
 </dx-data-grid>
 
 <!-- tooltip -->

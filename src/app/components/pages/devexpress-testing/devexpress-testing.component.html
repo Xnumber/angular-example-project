@@ -75,7 +75,7 @@ qqq<!-- <p>devexpress-testing works!</p>
 
 
 <dx-data-grid
-  [dataSource]="[{a: 1, b: 2}, {a: 3, b: 6}]"
+  [dataSource]="[{a: 1000000, b: 2}, {a: 3, b: 6}]"
   [editing]="{mode: 'popup'}"
   (onRowPrepared)="onRowPrepared($event)"
   [repaintChangesOnly]="false"
@@ -90,7 +90,7 @@ qqq<!-- <p>devexpress-testing works!</p>
 
       <dxi-item dataField="a"></dxi-item>
       <dxi-item dataField="b" [visible]="isFVisible"></dxi-item>
-      <dxi-item dataField="c" [visible]="isFVisible"></dxi-item>
+      <!-- <dxi-item dataField="c" [visible]="isFVisible"></dxi-item> -->
       <button (click)="isFVisible = false">
       </button>
       </dxo-form>
@@ -101,19 +101,20 @@ qqq<!-- <p>devexpress-testing works!</p>
     caption="a" 
     dataField="a" 
     [setCellValue]="setCellValue"
-    [editorOptions]="{ valueChangeEvent: 'keyup' }"
+    [editorOptions]="{ valueChangeEvent: 'keyup', format: { style: 'currency', currency: 'USD', precision: 0, type: 'fixedPoint' }}"
+    [format]="{ style: 'currency', currency: 'USD', precision: 0, type: 'fixedPoint' }"
   >
   </dxi-column>
   <dxi-column caption="b" dataField="b"></dxi-column>
-  <dxi-column caption="c" dataField="c">
+  <!-- "id" contains the same values as "authorId" -->
+  <!-- <dxi-column caption="c" dataField="c">
       <dxo-lookup
         [dataSource]="lookupDataSource"
         displayExpr="title"
         valueExpr="id"
       > 
-      <!-- "id" contains the same values as "authorId" -->
       </dxo-lookup>
-  </dxi-column>
+  </dxi-column> -->
 </dx-data-grid>
 
 <!-- tooltip -->

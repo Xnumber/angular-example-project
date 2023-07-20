@@ -70,11 +70,8 @@
     </div>
   </div>
 </dx-data-grid> -->
-
-
-
 <dx-data-grid
-  [dataSource]="[{a: 1000000, b: 2, c: 1}, {a: 3, b: 6, c: 2}]"
+  [dataSource]="[{a: 6, b: 2, c: 1, d: 2, e: 3}, {a: 3, b: 6, c: 2, d: 5, e: 10}]"
   [editing]="{ mode: 'popup' }"
   (onRowPrepared)="onRowPrepared($event)"
   [repaintChangesOnly]="true"
@@ -84,30 +81,50 @@
     <dxo-form
       [customizeItem]="customizeItem"
     >
-      <!-- (onFieldDataChanged)="form_fieldDataChanged($event)"> -->
-      <dxi-item itemType="group">
+      
+      
+      <dxi-item 
+        *ngFor="let c of columns"
+        itemType="group"
+      >
         <dxi-item
           itemType="group"
-          caption="C"
-          name="C"
+          [caption]="c"
+          [name]="c"
           [visible]="cVisible"
         >
           <dxi-item 
-            dataField="c"
+            [dataField]="c"
+            [editorOptions]="{
+              onInitialized: onInitialized
+            }"
           ></dxi-item>
         </dxi-item>
       </dxi-item>
 
-      <dxi-item dataField="a"></dxi-item>
+      <dxi-item
+        itemType="group"
+      >
+        <dxi-item
+          itemType="group"
+          caption="d"
+          name="d"
+          [visible]="dVisible"
+        >
+          <dxi-item 
+            dataField="d"
+          ></dxi-item>
+        </dxi-item>
+      </dxi-item>
 
-      <dxi-item itemType="group">
+      <!-- <dxi-item itemType="group">
         <dxi-item
           itemType="group"
           caption="B"
           name="B"
           [visible]="bVisible"
         >
-          <dxi-item 
+          <dxi-item
             dataField="b"
             [editorOptions]="{
               valueChangeEvent: 'keyup',
@@ -115,23 +132,23 @@
             }"
           ></dxi-item>
         </dxi-item>
-      </dxi-item>
-
+      </dxi-item> -->
 
       <!-- <dxi-item dataField="c" ></dxi-item> -->
     </dxo-form>
   </dxo-editing>
-  <dxi-column
+  <!-- <dxi-column
     caption="a" 
     dataField="a" 
     [editorOptions]="{ valueChangeEvent: 'keyup', format: { style: 'currency', currency: 'USD', precision: 0, type: 'fixedPoint' }}"
     [format]="{ style: 'currency', currency: 'USD', precision: 0, type: 'fixedPoint' }"
   >
   </dxi-column>
-  <dxi-column caption="b" dataField="b"></dxi-column>
-  <dxi-column 
-    caption="c" 
-    dataField="c"
+  <dxi-column caption="b" dataField="b"></dxi-column> -->
+  <dxi-column
+    *ngFor="let c of columns"
+    [caption]="c" 
+    [dataField]="c"
     [setCellValue]="setSelectCellValue"
   >
       <dxo-lookup
@@ -140,6 +157,9 @@
         valueExpr="id"
       > 
       </dxo-lookup>
+  </dxi-column>
+  <dxi-column dataField="d">
+
   </dxi-column>
 </dx-data-grid>
 <!-- tooltip -->

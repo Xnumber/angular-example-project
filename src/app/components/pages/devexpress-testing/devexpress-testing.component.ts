@@ -22,6 +22,8 @@ export class DevexpressTestingComponent {
   bVisible = true;
   lookupDataSource: any;
   cVisible = true;
+  dVisible = true;
+  columns = ['a', 'b', 'c'];
   constructor(
     service: DevexpressTestingService,
     @Inject(HttpClient) httpClient: HttpClient
@@ -46,7 +48,7 @@ export class DevexpressTestingComponent {
   // }
   // https://js.devexpress.com/Documentation/22_2/Guide/UI_Components/DataGrid/How_To/Dynamically_Change_Form_Item_Properties_in_the_Editing_State/
   customizeItem = (item: Column) => {
-    alert(123)
+    alert('123')
     if (item && item.dataField === 'a') {
       const gridInstance = this.dataGrid.instance;
       const editRowKey = gridInstance.option('editing.editRowKey');
@@ -65,15 +67,19 @@ export class DevexpressTestingComponent {
     }
   }
 
+  onInitialized() {
+    alert('onInitialized')
+  }
+
   onSaving(e: SavingEvent) {
     console.log(e)
   }
 
   setSelectCellValue = (newData: any, value: any, currentRowData: any) => {
-    newData.c = value;
-    
-    this.bVisible = false;
-  }
+    newData.a = value;
+    this.dVisible = false;
+    alert('set')
+  };
 
   onValueChangedSelect = () => {
     alert('onValueChangedSelect')
@@ -94,7 +100,6 @@ export class DevexpressTestingComponent {
   //   this.isFVisible = false
   //   console.log('onSetValue', this.isFVisible)
   // }
-
 
   setCellValue (newData: any, value: any, currentRowData: any) {
     newData.a = value;

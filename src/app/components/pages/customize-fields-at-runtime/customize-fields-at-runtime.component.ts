@@ -12,6 +12,17 @@ import { map } from 'rxjs';
 export class CustomizeFieldsAtRuntimeComponent implements AfterViewInit {
   store!: CustomStore;
   selectOption: any;
+  // selects = [
+  //   { dataField: "s1", value: 1},
+  //   { dataField: "s2", value: 2},
+  //   { dataField: "s3", value: 3},
+  //   { dataField: "s4", value: 4},
+  //   { dataField: "s5", value: 5},
+  //   { dataField: "s6", value: 6}
+  // ];
+  selects = [
+    "s1", "s2", "s3", "s4", "s5", "s6"
+  ];
   employee: Employee;
 
   isHomeAddressVisible: boolean | null | undefined;
@@ -54,7 +65,8 @@ export class CustomizeFieldsAtRuntimeComponent implements AfterViewInit {
       },
 			valueExpr: 'id',
 			displayExpr: 'title',
-      onValueChanged: this.onValueChangedSelect
+      onValueChanged: this.onValueChangedSelect,
+      onInitialized: this.onInitialized
 		}
 
     this.employee = service.getEmployee();
@@ -87,6 +99,9 @@ export class CustomizeFieldsAtRuntimeComponent implements AfterViewInit {
   onValueChangedSelect = () => { 
     alert(123)
     this.isHomeAddressVisible = false;
+  }
+  onInitialized = () => {
+    alert('initialized')
   }
   getPhonesOptions(phones: any) {
     const options = [];

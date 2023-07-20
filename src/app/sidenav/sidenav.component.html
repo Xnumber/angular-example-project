@@ -1,4 +1,4 @@
-<style>
+`<style>
 	.activebutton {
     box-shadow: inset 0 1px 0 0 #dcecfb;
     background: #bddbfa linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
@@ -28,6 +28,11 @@
 		<div>	
 			<a routerLinkActive="activebutton" [routerLink]="['/']">
 				home
+			</a>
+		</div>
+		<div>	
+			<a routerLinkActive="activebutton" [routerLink]="['/customize-fields-at-runtime']">
+				Customize Fields at Runtime
 			</a>
 		</div>
 		<div>	
@@ -63,8 +68,7 @@
 		</div>
 		<div>
 			<a ariaCurrentWhenActive="page" routerLinkActive="activebutton" [routerLink]="['/member']">
-				Member
-			</a>
+				Member			</a>
 		</div>
 		<div>
 			<a [routerLink]="['/product-list']">

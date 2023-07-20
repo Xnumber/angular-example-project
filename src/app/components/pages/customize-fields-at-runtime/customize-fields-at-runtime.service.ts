@@ -10,6 +10,7 @@ export type Employee = {
   City: string;
 
   Phones: string[];
+  select: number;
 }
 
 const employee : Employee = {
@@ -18,6 +19,7 @@ const employee : Employee = {
   Address: '351 S Hill St., Los Angeles, CA',
   City: 'Atlanta',
   Phones: ['8005552797', '8005953232'],
+  select: 2
 };
 
 @Injectable({

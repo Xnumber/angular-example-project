@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CustomizeFieldsAtRuntimeRoutingModule } from './customize-fields-at-runtime-routing.module';
 import { CustomizeFieldsAtRuntimeComponent } from './customize-fields-at-runtime.component';
-import { DxFormModule } from 'devextreme-angular';
+import { DxFormModule, DxSelectBoxModule } from 'devextreme-angular';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { DxFormModule } from 'devextreme-angular';
   imports: [
     CommonModule,
     CustomizeFieldsAtRuntimeRoutingModule,
-    DxFormModule
+    DxFormModule,
+    DxSelectBoxModule
   ]
 })
 export class CustomizeFieldsAtRuntimeModule { }

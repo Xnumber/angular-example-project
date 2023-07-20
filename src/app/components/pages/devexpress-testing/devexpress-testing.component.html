@@ -1,4 +1,4 @@
-qqq<!-- <p>devexpress-testing works!</p>
+<!-- <p>devexpress-testing works!</p>
 <input #input [(ngModel)]="inputValue" type="text">
 <div #output></div>
 {{inputValue2}}
@@ -70,15 +70,11 @@ qqq<!-- <p>devexpress-testing works!</p>
     </div>
   </div>
 </dx-data-grid> -->
-
-
-
-
 <dx-data-grid
-  [dataSource]="[{a: 1000000, b: 2}, {a: 3, b: 6}]"
-  [editing]="{mode: 'popup'}"
+  [dataSource]="[{a: 1000000, b: 2, c: 1}, {a: 3, b: 6, c: 2}]"
+  [editing]="{ mode: 'popup' }"
   (onRowPrepared)="onRowPrepared($event)"
-  [repaintChangesOnly]="false"
+  [repaintChangesOnly]="true"
 >
   <dxo-editing [allowUpdating]="true">
     <dxo-form
@@ -87,36 +83,45 @@ qqq<!-- <p>devexpress-testing works!</p>
     >
 
 
-
+      <dxi-item itemType="group">
+        <dxi-item
+          itemType="group"
+          caption="Home Address"
+          name="HomeAddress"
+          [visible]="cVisible"
+        >
+          <dxi-item dataField="c"></dxi-item>
+        </dxi-item>
+      </dxi-item>
       <dxi-item dataField="a"></dxi-item>
-      <dxi-item dataField="b" [visible]="isFVisible"></dxi-item>
-      <!-- <dxi-item dataField="c" [visible]="isFVisible"></dxi-item> -->
-      <button (click)="isFVisible = false">
-      </button>
-      </dxo-form>
+      <dxi-item 
+        dataField="b"
+        [visible]="isFVisible"
+        [editorOptions]="{
+          valueChangeEvent: 'keyup',
+          onValueChanged: onValueChangedInput
+        }"
+      ></dxi-item>
+      <!-- <dxi-item dataField="c" ></dxi-item> -->
+    </dxo-form>
   </dxo-editing>
-  <!-- [setCellValue]="onSetValue" -->
-
-  <dxi-column 
+  <dxi-column
     caption="a" 
     dataField="a" 
-    [setCellValue]="setCellValue"
     [editorOptions]="{ valueChangeEvent: 'keyup', format: { style: 'currency', currency: 'USD', precision: 0, type: 'fixedPoint' }}"
     [format]="{ style: 'currency', currency: 'USD', precision: 0, type: 'fixedPoint' }"
   >
   </dxi-column>
   <dxi-column caption="b" dataField="b"></dxi-column>
-  <!-- "id" contains the same values as "authorId" -->
-  <!-- <dxi-column caption="c" dataField="c">
+  <dxi-column caption="c" dataField="c">
       <dxo-lookup
         [dataSource]="lookupDataSource"
         displayExpr="title"
         valueExpr="id"
       > 
       </dxo-lookup>
-  </dxi-column> -->
+  </dxi-column>
 </dx-data-grid>
-
 <!-- tooltip -->
 <!-- https://supportcenter.devexpress.com/ticket/details/t845698/datagrid-how-to-show-custom-tooltips-for-cells -->
 <!-- https://js.devexpress.com/Demos/WidgetsGallery/Demo/Tooltip/Overview/Angular/Light/ -->

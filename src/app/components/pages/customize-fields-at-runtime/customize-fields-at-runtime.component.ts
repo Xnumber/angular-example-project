@@ -95,9 +95,10 @@ export class CustomizeFieldsAtRuntimeComponent implements AfterViewInit {
     };
   }
 
+
+  
   ngAfterViewInit(): void {}
   onValueChangedSelect = () => { 
-    alert(123)
     this.isHomeAddressVisible = false;
   }
   onInitialized = () => {

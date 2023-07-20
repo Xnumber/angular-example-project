@@ -21,6 +21,7 @@ export class DevexpressTestingComponent {
   collapsed = false;
   isFVisible = true;
   lookupDataSource: any;
+  cVisible = true;
   constructor(
     service: DevexpressTestingService,
     @Inject(HttpClient) httpClient: HttpClient
@@ -64,6 +65,10 @@ export class DevexpressTestingComponent {
     }
   }
 
+  onValueChangedInput = () => { 
+    alert('123')
+    this.cVisible = false;
+  }
 
   form_fieldDataChanged(e: any) {
     console.log('onFieldDataChanged', e)

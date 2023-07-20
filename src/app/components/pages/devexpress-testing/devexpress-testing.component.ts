@@ -28,6 +28,14 @@ export class DevexpressTestingComponent {
     service: DevexpressTestingService,
     @Inject(HttpClient) httpClient: HttpClient
   ) {
+    let that = this,
+    origOnSetCellValue = this.setCellValue;
+
+    this.setCellValue = function() {
+        // origOnSetCellValue.apply(this, [].slice.call(arguments, 0, 3).concat([that]));
+        origOnSetCellValue.apply(this, ([] as any).slice.call(arguments, 0, 3).concat([that]));
+    };
+
     this.dataSource = service.getDataSource();
       this.lookupDataSource = {
         store: new CustomStore({
@@ -43,6 +51,15 @@ export class DevexpressTestingComponent {
         }),
         sort: "name"
     };
+  }
+
+
+  setCellValue(rowData: any, value: any, currentData: any, componentInstance: any){
+    console.log(componentInstance);
+    console.log((<any>this).dataField);
+    componentInstance.dVisible = false;
+    rowData[(<any>this).dataField] = value;
+    // rowData.FirstName = "foo";
   }
   // constructor(@Inject(HttpClient) httpClient: HttpClient){
   // }
@@ -76,9 +93,9 @@ export class DevexpressTestingComponent {
   }
 
   setSelectCellValue = (newData: any, value: any, currentRowData: any) => {
+    alert('set')
     newData.a = value;
     this.dVisible = false;
-    alert('set')
   };
 
   onValueChangedSelect = () => {
@@ -101,10 +118,10 @@ export class DevexpressTestingComponent {
   //   console.log('onSetValue', this.isFVisible)
   // }
 
-  setCellValue (newData: any, value: any, currentRowData: any) {
-    newData.a = value;
-    newData.b = 100;
-  }
+  // setCellValue (newData: any, value: any, currentRowData: any) {
+  //   newData.a = value;
+  //   newData.b = 100;
+  // }
 
   contentReady = (e: any) => {
     if (!this.collapsed) {

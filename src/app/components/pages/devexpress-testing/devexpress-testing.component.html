@@ -70,38 +70,54 @@
     </div>
   </div>
 </dx-data-grid> -->
+
+
+
 <dx-data-grid
   [dataSource]="[{a: 1000000, b: 2, c: 1}, {a: 3, b: 6, c: 2}]"
   [editing]="{ mode: 'popup' }"
   (onRowPrepared)="onRowPrepared($event)"
   [repaintChangesOnly]="true"
+  (onSaving)="onSaving($event)"
 >
   <dxo-editing [allowUpdating]="true">
     <dxo-form
       [customizeItem]="customizeItem"
-      (onFieldDataChanged)="form_fieldDataChanged($event)">
     >
+      <!-- (onFieldDataChanged)="form_fieldDataChanged($event)"> -->
+      <dxi-item itemType="group">
+        <dxi-item
+          itemType="group"
+          caption="C"
+          name="C"
+          [visible]="cVisible"
+        >
+          <dxi-item 
+            dataField="c"
+          ></dxi-item>
+        </dxi-item>
+      </dxi-item>
 
+      <dxi-item dataField="a"></dxi-item>
 
       <dxi-item itemType="group">
         <dxi-item
           itemType="group"
-          caption="Home Address"
-          name="HomeAddress"
-          [visible]="cVisible"
+          caption="B"
+          name="B"
+          [visible]="bVisible"
         >
-          <dxi-item dataField="c"></dxi-item>
+          <dxi-item 
+            dataField="b"
+            [editorOptions]="{
+              valueChangeEvent: 'keyup',
+              onValueChanged: onValueChangedInput
+            }"
+          ></dxi-item>
         </dxi-item>
       </dxi-item>
-      <dxi-item dataField="a"></dxi-item>
-      <dxi-item 
-        dataField="b"
-        [visible]="isFVisible"
-        [editorOptions]="{
-          valueChangeEvent: 'keyup',
-          onValueChanged: onValueChangedInput
-        }"
-      ></dxi-item>
+
+
       <!-- <dxi-item dataField="c" ></dxi-item> -->
     </dxo-form>
   </dxo-editing>
@@ -113,7 +129,11 @@
   >
   </dxi-column>
   <dxi-column caption="b" dataField="b"></dxi-column>
-  <dxi-column caption="c" dataField="c">
+  <dxi-column 
+    caption="c" 
+    dataField="c"
+    [setCellValue]="setSelectCellValue"
+  >
       <dxo-lookup
         [dataSource]="lookupDataSource"
         displayExpr="title"

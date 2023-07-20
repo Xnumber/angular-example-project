@@ -3,7 +3,7 @@ import { Component, Inject, ViewChild } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import DataSource from 'devextreme/data/data_source';
-import { Column, RowPreparedEvent } from 'devextreme/ui/data_grid';
+import { Column, RowPreparedEvent, SavingEvent } from 'devextreme/ui/data_grid';
 import { Item, SimpleItem } from 'devextreme/ui/form';
 import { map } from 'rxjs';
 import { DevexpressTestingService } from 'src/app/services/devexpress-testing.service';
@@ -19,7 +19,7 @@ export class DevexpressTestingComponent {
   inputValue: string = '';
   inputValue2: string = '';
   collapsed = false;
-  isFVisible = true;
+  bVisible = true;
   lookupDataSource: any;
   cVisible = true;
   constructor(
@@ -65,8 +65,23 @@ export class DevexpressTestingComponent {
     }
   }
 
+  onSaving(e: SavingEvent) {
+    console.log(e)
+  }
+
+  setSelectCellValue = (newData: any, value: any, currentRowData: any) => {
+    newData.c = value;
+    
+    this.bVisible = false;
+  }
+
+  onValueChangedSelect = () => {
+    alert('onValueChangedSelect')
+    // this.bVisible = false
+  }
+
   onValueChangedInput = () => { 
-    alert('123')
+    alert('onValueChangedInput')
     this.cVisible = false;
   }
 

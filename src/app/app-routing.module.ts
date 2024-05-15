@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'provider-testing', loadChildren: () => import('./components/pages/provider-testing/provider-testing.module').then(m => m.ProviderTestingModule) },
   { path: 'project-testing', loadChildren: () => import('./components/project-testing/project-testing.module').then(m => m.ProjectTestingModule) },
   { path: 'customize-fields-at-runtime', loadChildren: () => import('./components/pages/customize-fields-at-runtime/customize-fields-at-runtime.module').then(m => m.CustomizeFieldsAtRuntimeModule) },
+  { path: 'rxjs', loadChildren: () => import('./pages/rxjs/rxjs.module').then(m => m.RxjsModule) },
 ];
 
 @NgModule({

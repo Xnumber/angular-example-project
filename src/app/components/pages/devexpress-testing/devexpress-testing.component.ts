@@ -3,7 +3,7 @@ import { Component, Inject, ViewChild } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import DataSource from 'devextreme/data/data_source';
-import { Column, RowPreparedEvent, SavingEvent } from 'devextreme/ui/data_grid';
+import { Column, Editing, EditorPreparedEvent, EditorPreparingEvent, RowPreparedEvent, SavingEvent } from 'devextreme/ui/data_grid';
 import { Item, SimpleItem } from 'devextreme/ui/form';
 import { map } from 'rxjs';
 import { DevexpressTestingService } from 'src/app/services/devexpress-testing.service';
@@ -23,7 +23,7 @@ export class DevexpressTestingComponent {
   lookupDataSource: any;
   cVisible = true;
   dVisible = true;
-  columns = ['a', 'b', 'c'];
+  // columns = ['a', 'b', 'c'];
   constructor(
     service: DevexpressTestingService,
     @Inject(HttpClient) httpClient: HttpClient
@@ -53,7 +53,33 @@ export class DevexpressTestingComponent {
     };
   }
 
+  columns: Column[] = [
+    {
+      dataField: 'a'
+    }
+  ]
 
+  formItems: Item[] = [
+    {
+      dataField: 'a',
+      validationRules: [
+        {
+          type: 'required'
+        }
+      ]
+    }
+  ]
+
+
+
+
+  onEditorPreparing = (e:EditorPreparingEvent) =>{
+    if(e.parentType === 'filterRow') {
+      alert(12)
+      e.editorName = 'dxDateBox'
+    }
+  }
+  
   setCellValue(rowData: any, value: any, currentData: any, componentInstance: any){
     console.log(componentInstance);
     console.log((<any>this).dataField);
@@ -62,30 +88,46 @@ export class DevexpressTestingComponent {
     // rowData.FirstName = "foo";
   }
   // constructor(@Inject(HttpClient) httpClient: HttpClient){
-  // }
-  // https://js.devexpress.com/Documentation/22_2/Guide/UI_Components/DataGrid/How_To/Dynamically_Change_Form_Item_Properties_in_the_Editing_State/
-  customizeItem = (item: Column) => {
-    alert('123')
-    if (item && item.dataField === 'a') {
-      const gridInstance = this.dataGrid.instance;
-      const editRowKey = gridInstance.option('editing.editRowKey');
-      const rowIndex = gridInstance.getRowIndexByKey(editRowKey);
-      // item.visible = gridInstance.cellValue(rowIndex, "AddressRequired");
-    }
-    const gridInstance = this.dataGrid.instance;
-    const editRowKey = gridInstance.option('editing.editRowKey');
-    const rowIndex = gridInstance.getRowIndexByKey(editRowKey);
-    console.log('gridInstance.cellValue(rowIndex, "a");', gridInstance.cellValue(rowIndex, "a"))
-    // console.log(item)
-    if (item.dataField === 'b' && gridInstance.hasEditData()) {
-      if (gridInstance.cellValue(rowIndex, "a") > 10) {
-        item.visible = false;
+    // }
+    // https://js.devexpress.com/Documentation/22_2/Guide/UI_Components/DataGrid/How_To/Dynamically_Change_Form_Item_Properties_in_the_Editing_State/
+    customizeItem = (item: Column) => {
+      // alert('123')
+    
+    // if (item && item.dataField === 'a') {
+    //   const gridInstance = this.dataGrid.instance;
+    //   const editRowKey = gridInstance.option('editing.editRowKey');
+    //   const rowIndex = gridInstance.getRowIndexByKey(editRowKey);
+    //   // item.visible = gridInstance.cellValue(rowIndex, "AddressRequired");
+    // }
+    // const gridInstance = this.dataGrid.instance;
+    // const editRowKey = gridInstance.option('editing.editRowKey');
+    // const rowIndex = gridInstance.getRowIndexByKey(editRowKey);
+    // // console.log('gridInstance.cellValue(rowIndex, "a");', gridInstance.cellValue(rowIndex, "a"))
+    // // console.log(item)
+    // if (item.dataField === 'b' && gridInstance.hasEditData()) {
+    //   if (gridInstance.cellValue(rowIndex, "a") > 10) {
+    //     item.visible = false;
+    //   }
+    // }
+    item.validationRules = item.validationRules?.map(vr => {
+      return {
+        ...vr,
+        message: '123'
       }
-    }
+    }) 
+  }
+  
+  editing: Editing = { 
+    mode: 'popup', 
+    form: { 
+      items: this.formItems,
+      customizeItem: this.customizeItem
+    },
+    allowUpdating: true
   }
 
   onInitialized() {
-    alert('onInitialized')
+    // alert('onInitialized')
   }
 
   onSaving(e: SavingEvent) {

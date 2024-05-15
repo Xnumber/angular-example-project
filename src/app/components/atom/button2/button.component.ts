@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BactchService } from 'src/app/services/batch.service';
 
 @Component({
-  selector: 'app-button-2',
+  selector: 'app-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   standalone: true
 })
-export class Button2Component {
+export class ButtonComponent implements OnInit{
   constructor(
     private batch: BactchService
   ) {
@@ -15,6 +15,9 @@ export class Button2Component {
   }
 
   ngOnInit(): void {
-    this.batch.getData(true).subscribe()
+    this.batch.getData(true).subscribe((e) => {
+      console.log('e ditto')
+      console.log(e)
+    })
   }
 }
